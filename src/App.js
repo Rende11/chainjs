@@ -1,8 +1,22 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import MyButton from './MyButton.jsx';
 
 class App extends Component {
+  constructor (props) {
+    super(props);
+    this.state = { name: "TOSTIK" };
+  }
+
+  onSubmit = (e) => {
+    console.log(e);
+    this.setState({ name: e });
+  }
+
+  onClick = (e) => {
+    this.setState({ name: "IKI" });
+  }
   render() {
     return (
       <div className="App">
@@ -10,16 +24,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <form action="/name" method="post">
-          <label>
-          Name:
-            <input type="text" name="name" />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
+        <MyButton />
       </div>
     );
   }

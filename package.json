@@ -5,7 +5,8 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-scripts": "1.0.14",
-    "express": "*"
+    "express": "*",
+    "jssha": "*"
   },
   "devDependencies": {
     "babel-cli": "*",
@@ -25,7 +26,6 @@
     "flow-typed": "*",
     "jest": "^20"
   },
-  "proxy": "http://localhost:3001",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
