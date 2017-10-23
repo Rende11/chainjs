@@ -5,8 +5,9 @@ export default class MyButton extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { hash: "Tolik" };
+    this.state = { hash: "Your SHA will be here" };
   }
+
   getSha = (file) => {
     const sha = new jssha("SHA-256", "TEXT");
     sha.update(file);
@@ -22,15 +23,29 @@ export default class MyButton extends React.Component {
     };
   }
 
+  onClick = () => {
+    fetch('/sha', {
+      method: 'POST',
+      headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        sha: this.state.hash
+      })
+    })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <div>
-        <button>Test</button>
-        <form ectype="multipar/form-data">
-          <input type="file" name="file" onChange={(e) => this.onLoad(e)}>
-          </input>
-        </form>
+        <input type="file" name="file" onChange={(e) => this.onLoad(e)}>
+        </input>
         <p>{this.state.hash}</p>
+        <button onClick={this.onClick}>SendHash</button>
       </div>
     );
-}}
+  }
+}
