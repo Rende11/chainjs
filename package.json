@@ -7,7 +7,8 @@
     "react-scripts": "1.0.14",
     "express": "*",
     "jssha": "*",
-    "body-parser": "*"
+    "body-parser": "*",
+    "react-bootstrap": "*"
   },
   "devDependencies": {
     "babel-cli": "*",
@@ -32,6 +33,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "babel-node": "babel-node"
+    "babel-node": "babel-node",
+    "test-server": "jest"
   }
 }

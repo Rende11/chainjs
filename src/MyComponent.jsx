@@ -1,11 +1,11 @@
 import React from 'react';
 import jssha from 'jssha';
 
-export default class MyButton extends React.Component {
+export default class MyComponent extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { hash: "Your SHA will be here" };
+    this.state = { hash: '', hashInfo: {} };
   }
 
   getSha = (file) => {
@@ -24,17 +24,18 @@ export default class MyButton extends React.Component {
   }
 
   onClick = () => {
-    fetch('/sha', {
-      method: 'POST',
-      headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        sha: this.state.hash
+      fetch('/sha', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          sha: this.state.hash
+        })
       })
-    })
-      .then(res => console.log(res))
+      .then(response => response.json())
+      .then(data => this.setState({ hashInfo: data }))
       .catch(err => console.log(err));
   }
 
@@ -43,8 +44,9 @@ export default class MyButton extends React.Component {
       <div>
         <input type="file" name="file" onChange={(e) => this.onLoad(e)}>
         </input>
-        <p>{this.state.hash}</p>
+        <p>{this.state.hash.length > 0 ? this.state.hash : 'Your hash will be here'}</p>
         <button onClick={this.onClick}>SendHash</button>
+        <p>{this.state.hashInfo.ts ? `Registret at ${this.state.hashInfo.ts}` : ''}</p>
       </div>
     );
   }

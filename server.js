@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
 
+import { getHashInfo } from './src/storage';
 
 const app = express();
 const port = 3001;
@@ -17,8 +18,10 @@ app.get('/', (request, response) => {
 app.post('/sha', (request, response) => {
   console.log('Okek');
   console.log(request.body);
-  console.log(request.body.sha);
-  response.end('OKEY');
+  const hash = request.body.sha;
+  const hashInfo = getHashInfo(hash);
+  console.log(hashInfo);
+  response.end(JSON.stringify({ ts: hashInfo }));
 })
 app.listen(port, () => {
   console.log(`Ready on port: ${port}`);
