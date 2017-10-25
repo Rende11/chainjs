@@ -8,6 +8,7 @@ run-client:
 	npm run start
 
 build:
+	rm -rf docs
 	npm run build
 
 test:
@@ -23,10 +24,10 @@ testrpc:
 	npm run	testrpc
 
 compile-truffle:
-	truffle compile
+	npm run truffle compile
 
 migrate:
-	truffle migrate
+	npm run truffle migrate
 
 start:
 	make build

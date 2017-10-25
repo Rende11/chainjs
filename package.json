@@ -11,7 +11,8 @@
     "react-bootstrap": "*",
     "ethereumjs-testrpc": "*",
     "web3": "*",
-    "truffle-contract": "*"
+    "truffle-contract": "*",
+    "truffle": "*"
   },
   "devDependencies": {
     "babel-cli": "*",
@@ -42,6 +43,7 @@
     "babel-node": "babel-node",
     "test-server": "jest",
     "eslint": "eslint",
-    "testrpc": "testrpc"
+    "testrpc": "testrpc",
+    "truffle": "truffle"
   }
 }
