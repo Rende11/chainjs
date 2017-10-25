@@ -23,15 +23,18 @@ linter:
 testrpc:
 	npm run	testrpc
 
-compile-truffle:
+compile:
 	npm run truffle compile
 
 migrate:
 	npm run truffle migrate
 
+test-contracts:
+	npm run truffle test
+
 start:
 	make build
-	make compile-truffle
+	make compile
 	make migrate
 	make run-server
 
