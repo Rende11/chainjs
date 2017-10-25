@@ -6,5 +6,5 @@ export const getHashInfo = (hash) => {
   }
   storage[hash] = { ts: Date.now() };
   return storage[hash].ts;
-}
+};
 

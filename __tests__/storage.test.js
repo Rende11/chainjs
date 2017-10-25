@@ -8,5 +8,4 @@ describe('Base getHashInfo test', () => {
     expect(getHashInfo(hash1)).toBe(getHashInfo(hash1));
     expect(getHashInfo(hash2)).not.toBe(getHashInfo(hash1));
   });
-
 });
