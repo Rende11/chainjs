@@ -19,4 +19,19 @@ test-client:
 linter:
 	npm run eslint server.js src/
 
+testrpc:
+	npm run	testrpc
+
+compile-truffle:
+	truffle compile
+
+migrate:
+	truffle migrate
+
+start:
+	make build
+	make compile-truffle
+	make migrate
+	make run-server
+
 .PHONY: build

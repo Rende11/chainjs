@@ -5,22 +5,21 @@ import truffle from 'truffle-contract';
 import path from 'path';
 import fs from 'fs';
 
-import { getHashInfo } from './src/storage';
-
 const app = express();
 const port = 3003;
 const localBlockchain = 'http://localhost:8545';
 
 const provider = new Web3.providers.HttpProvider(localBlockchain);
 const web3 = new Web3(provider);
-web3.eth.defaultAccount = web3.eth.accounts[0];
-app.use(express.static(path.join(__dirname, 'build')));
+[web3.eth.defaultAccount] = web3.eth.accounts;
+
+app.use(express.static(path.join(__dirname, 'docs')));
 
 app.use(bodyParser.json());
 
 
 app.get('/', (request, response) => {
-  response.sendFile(path.join(__dirname, 'build', 'index.html'));
+  response.sendFile(path.join(__dirname, 'docs', 'index.html'));
 });
 
 
@@ -42,10 +41,9 @@ app.use('/sha', async (request, response) => {
       const settedTime = await instance.getDocumentTime.call(hash);
       response.end(JSON.stringify({ ts: settedTime.toNumber() }));
     }
-  } catch(err) {
+  } catch (err) {
     console.log(err);
   }
-
 });
 
 

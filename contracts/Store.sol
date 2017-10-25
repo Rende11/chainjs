@@ -4,8 +4,7 @@ contract Store {
     mapping(string => uint) storedData;
 
     function getDocumentTime(string hash) returns (uint) {
-         uint data = storedData[hash];
-         return data;
+        return storedData[hash];
     }
 
     function addDocument(string hash) {

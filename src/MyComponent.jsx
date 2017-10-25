@@ -14,6 +14,11 @@ export default class MyComponent extends React.Component {
     return sha.getHash("HEX");
   }
 
+  convertTime = (timestamp) => {
+    const date = new Date(timestamp * 1000);
+    return `${date.toLocaleTimeString()} ${date.toLocaleDateString()}`;
+  }
+
   onLoad = (event) => {
     const [file] = event.target.files;
     const reader = new FileReader();
@@ -24,6 +29,7 @@ export default class MyComponent extends React.Component {
   }
 
   onClick = () => {
+    if(this.state.hash) {
       fetch('/sha', {
         method: 'POST',
         headers: {
@@ -37,6 +43,7 @@ export default class MyComponent extends React.Component {
       .then(response => response.json())
       .then(data => this.setState({ hashInfo: data }))
       .catch(err => console.log(err));
+    }
   }
 
   render() {
@@ -46,7 +53,7 @@ export default class MyComponent extends React.Component {
         </input>
         <p>{this.state.hash.length > 0 ? this.state.hash : 'Your hash will be here'}</p>
         <button onClick={this.onClick}>SendHash</button>
-        <p>{this.state.hashInfo.ts ? `Registret at ${this.state.hashInfo.ts}` : ''}</p>
+        <p>{this.state.hashInfo.ts ? `Registered at ${this.convertTime(this.state.hashInfo.ts)}` : ''}</p>
       </div>
     );
   }
