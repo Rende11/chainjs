@@ -10,11 +10,11 @@ run-client:
 build:
 	npm run build
 
-test:
-	npm run test-server -- './__tests__/'
-
 test-client:
 	npm run test
+
+test-contracts:
+	truffle test
 
 linter:
 	npm run eslint server.js src/
@@ -22,7 +22,7 @@ linter:
 testrpc:
 	npm run	testrpc
 
-compile-truffle:
+compile:
 	truffle compile
 
 migrate:
@@ -30,7 +30,7 @@ migrate:
 
 start:
 	make build
-	make compile-truffle
+	make compile
 	make migrate
 	make run-server
 
