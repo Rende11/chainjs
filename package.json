@@ -10,7 +10,8 @@
     "body-parser": "*",
     "react-bootstrap": "*",
     "ethereumjs-testrpc": "*",
-    "web3": "*"
+    "web3": "*",
+    "truffle-contract": "*"
   },
   "devDependencies": {
     "babel-cli": "*",
