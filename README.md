@@ -18,7 +18,7 @@ At first - start your local blockchain server
 ```
 make testrpc
 ```
-Then compile react, compile colidity, make migration and run express server
+Then compile react, compile solidity, make migration and run express server
 
 ```
 make start

@@ -1,13 +1,13 @@
 pragma solidity ^0.4.0;
 
 contract Store {
-    mapping(string => uint) storedData;
+    mapping(bytes32 => uint) storedData;
 
-    function getDocumentTime(string hash) returns (uint) {
+    function getDocumentTime(bytes32 hash) returns (uint) {
         return storedData[hash];
     }
 
-    function addDocument(string hash) {
+    function addDocument(bytes32 hash) {
         storedData[hash] = now;
     }
 
