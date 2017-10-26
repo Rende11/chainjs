@@ -1,6 +1,4 @@
 const Store = artifacts.require('Store');
-const Web3 = require('web3');
-
 
 contract('Store', function() {
 
